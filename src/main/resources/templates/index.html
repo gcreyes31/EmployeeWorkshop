@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- IMPORTANT CODE: always put this so that your HTML can read Thymeleaf code-->
+<html xmlns: th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO=8859-1">
+	<title>Employee Management System</title>
+
+	<!-- Bootstrap CSS, just to make the page readable-->
+	<link rel="stylesheet" 
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" 
+			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+			crossorigin="anonymous">
+	<!-- you can put this link into any HTML header to access bootstrap CSS-->
+</head>
+
+<body>
+	<div class="container my-2">
+
+	<h1>Employee List</h1>
+	<a th:href = "@{/newEmployeeForm}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+	
+	<!-- Use a table when trying to iterate through an entire list-->
+	<table class="table table-striped table-responsive-md">
+		<thead>
+			<tr>
+				<th>Employee First Name</th>
+				<th>Employee Last Name</th>
+				<th>Email</th>
+				<th colspan="2">Actions</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+		<!-- 
+			to iterate through a list, use th:each = ""
+			inside the quotes: 
+				var_name : ${object_passed_from_controller} <- make sure this is a collection 
+		-->
+			<tr th:each="employee : ${listEmployees}">
+				<!--
+					use ${var_name.attribute} to access the attributes of the object
+				-->
+				<td th:text="${employee.firstName}"></td>
+				<td th:text="${employee.lastName}"></td>
+				<td th:text="${employee.email}"></td>
+				
+				<!--
+					to link to another page: a th:href=""
+					inside the quotes:
+						@{/method_name/{id}(id = ${object.id})}
+						
+						**everything from {id} onwards is optional
+						if you want to change something specifically about the object in the row,
+						use the id option and call the method, but remember to use
+						@GetMapping("/mapping/{id}") and @PathVariable(value = {id})
+						to be able to use the object itself on your methods
+				-->
+				<td><a th:href="@{/updateEmployeeForm/{id}(id=${employee.id})}" class="btn btn-primary">Update</a></td>
+				<td><a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger">Delete</a></td>
+			</tr>
+		</tbody>
+		
+	</table>
+	</div>
+</body>
+</html>
