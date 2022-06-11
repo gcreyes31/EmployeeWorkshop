@@ -20,6 +20,15 @@
 	<br>
 	<h2>Update Employee</h2>
 	
+	<!-- this form calls the saveEmployee method when the submit button is clicked.
+	
+		th:object = ${object_name} = saves the object passed by the controller. this object will
+		be called repeatedly by the *{attribute} attributes in the th:fields.
+		
+		since this is the update page, it will be different because the controller passed
+		an existing object, rather than an object w/o any attributes.
+	-->
+	
 	<form action="#" th:action="@{/saveEmployee}" th:object = "${employee}" method="POST">
 		
 		<!-- important to add this to handle the update of employee, instead of adding new entry-->
@@ -28,6 +37,12 @@
 		<input type ="text" th:field = "*{firstName}" class="form-control mb-4 col-4">
 		<input type ="text" th:field = "*{lastName}" class="form-control mb-4 col-4">
 		<input type ="text" th:field = "*{email}" class="form-control mb-4 col-4">
+		
+		<!-- 
+			after clicking submit, the database will replace the original values 
+			with the values inside the fields above.
+		
+		-->
 		
 		<button type="submit" class="btn btn-info col-2">Update Employee</button>
 	</form>

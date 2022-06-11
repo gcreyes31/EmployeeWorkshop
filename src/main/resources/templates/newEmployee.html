@@ -20,6 +20,12 @@
 	<br>
 	<h2>Add New Employee</h2>
 	
+	<!-- this form calls the saveEmployee method when the submit button is clicked.
+	
+		th:object = ${object_name} = saves the object passed by the controller. this object will
+		be called repeatedly by the *{attribute} attributes in the th:fields.
+	-->
+	
 	<form action="#" th:action="@{/saveEmployee}" th:object = "${employee}" method="POST">
 		<input type ="text" th:field = "*{firstName}" placeholder = "Employee First Name"
 		class="form-control mb-4 col-4">
@@ -28,6 +34,10 @@
 		<input type ="text" th:field = "*{email}" placeholder = "Employee Email"
 		class="form-control mb-4 col-4">
 		
+		<!-- 
+			the submit button calls the method referred to by the form when clicked.
+			all the values in the text fields will be saved in the object after 
+		-->
 		<button type="submit" class="btn btn-info col-2">Save Employee</button>
 	</form>
 

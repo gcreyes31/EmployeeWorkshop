@@ -1,6 +1,9 @@
 package net.javaguide.mvcpractice.controllers;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -94,5 +97,22 @@ public class EmployeeController {
 		
 		//redirect to home page
 		return "redirect:/";
+	}
+	
+	
+	@PostMapping("/searchEmployee")
+	
+	//the @Param annotation was used here and it fetches whatever element had the
+	//name attribute "name" in the form that called this method
+	public String searchEmployee(@Param("name") String name, Model model) {
+		
+		//called the method which searches for names that contains the string
+		List<Employee> listEmployees = empserv.returnEmployeeByName(name);
+		
+		//add to model
+		model.addAttribute("listEmployees", listEmployees);
+		
+		//redirect to home page
+		return "index";
 	}
 }
