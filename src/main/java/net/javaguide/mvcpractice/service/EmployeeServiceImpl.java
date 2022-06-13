@@ -1,6 +1,7 @@
 package net.javaguide.mvcpractice.service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	//JPA syntax to find the object in the database using the id parameter
 	@Override
-	public Employee getEmployeeById(long id) {
+	public Employee getEmployeeById(String id) {
 		// TODO Auto-generated method stub
 		Optional<Employee> optional = emprepo.findById(id);
 		Employee employee = null;
@@ -50,11 +51,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	//JPA syntax to remove the object from the database
 	@Override
-	public void deleteEmployeeById(long id) {
+	public void deleteEmployeeById(String id) {
 		// TODO Auto-generated method stub
 		this.emprepo.deleteById(id);
 	}
 	
+	@Override
 	//user-defined method to look for the employees by name provided in the search bar
 	public List<Employee> returnEmployeeByName(String name) {
 		// TODO Auto-generated method stub

@@ -1,6 +1,7 @@
 package net.javaguide.mvcpractice.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,9 @@ public interface EmployeeService {
 	
 	void saveEmployee(Employee employee);
 	
-	Employee getEmployeeById(long id);
+	Employee getEmployeeById(String id);
 	
-	void deleteEmployeeById(long id);
+	void deleteEmployeeById(String id);
 	
 	List<Employee> returnEmployeeByName(String name);
 }

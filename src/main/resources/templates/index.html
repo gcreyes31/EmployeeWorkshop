@@ -18,23 +18,35 @@
 	<div class="container my-2">
 
 	<h1>Employee List</h1>
-	<a th:href = "@{/newEmployeeForm}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+
+	<div style = "display:flex; padding: 10px">
 	
-	<!--search for an employee first or last name using string -->
-	<div style="display:block; padding-bottom: 10px;">
+		<a th:href = "@{/newEmployeeForm}" class="btn btn-info" style="margin-right: 3%">Add Employee</a>
+
+		<!--search for an employee first or last name using string -->
+		<div>
+			
+			<!--calling the seachEmployee method-->
+			<form action="#" th:action="@{/searchEmployee}" method="POST">
+			
+				<table>
+				<!-- 
+					since the @Param annotation was used in the searchEmployee method, 
+					changing the name of the input to "name" will tag it as the parameter
+					referred to in the method in the controller
+				-->
+				
+					<tr>
+						<td style="width: 85%"><input type ="text" name="name" placeholder = "Search employee first or last name" class="form-control"></td>
+						<td style="padding-left: 3%"><button type="submit" class="btn btn-info">Search</button></td>
+					</tr>
+				</table>
 	
-		<!--calling the seachEmployee method-->
-		<form action="#" th:action="@{/searchEmployee}" method="POST">
-			<!-- 
-				since the @Param annotation was used in the searchEmployee method, 
-				changing the name of the input to "name" will tag it as the parameter
-				referred to in the method in the controller
-			-->
-			<input type ="text" name="name" placeholder = "Search employee first or last name"
-			class="form-control mb-4 col-4">
-			<button type="submit" class="btn btn-info col-2">Search</button>
-		</form>
+	
+			</form>
+		</div>
 	</div>
+	
 
 	
 	<!-- Use a table when trying to iterate through an entire list-->
