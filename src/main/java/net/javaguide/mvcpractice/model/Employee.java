@@ -17,9 +17,9 @@ import javax.persistence.*;
 public class Employee {
 	
 	@Id
-	@GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	private UUID id;
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	private String id;
 	
 	@Column(name = "first_name")
 	private String firstName;
@@ -31,7 +31,6 @@ public class Employee {
 
 	public Employee(String firstName, String lastName, String email) {
 		super();
-		this.id = UUID.randomUUID();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

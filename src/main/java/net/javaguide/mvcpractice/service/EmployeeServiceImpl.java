@@ -35,7 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	//JPA syntax to find the object in the database using the id parameter
 	@Override
-	public Employee getEmployeeById(UUID id) {
+	public Employee getEmployeeById(String id) {
 		// TODO Auto-generated method stub
 		Optional<Employee> optional = emprepo.findById(id);
 		Employee employee = null;
@@ -51,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	//JPA syntax to remove the object from the database
 	@Override
-	public void deleteEmployeeById(UUID id) {
+	public void deleteEmployeeById(String id) {
 		// TODO Auto-generated method stub
 		this.emprepo.deleteById(id);
 	}

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import net.javaguide.mvcpractice.model.*;
 
 @Repository
-public interface EmployeeRepository extends JpaRepository<Employee, UUID> {
+public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	//The employee repository is usually empty, since this is a layer of abstraction between the
 	//service and the database itself. all methods that will perform CRUD on the DB
 	//are in the service class

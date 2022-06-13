@@ -72,7 +72,7 @@ public class EmployeeController {
 	//id parameter.
 	
 	@GetMapping("/updateEmployeeForm/{id}")
-	public String updateEmployee(@PathVariable(value = "id") UUID id, Model model) {
+	public String updateEmployee(@PathVariable(value = "id") String id, Model model) {
 		
 		//fetch employee
 		Employee employee = empserv.getEmployeeById(id);
@@ -90,7 +90,7 @@ public class EmployeeController {
 	//we delete it with methods in the service class
 	
 	@GetMapping("/deleteEmployee/{id}")
-	public String deleteEmployee(@PathVariable(value = "id") UUID id, Model model) {
+	public String deleteEmployee(@PathVariable(value = "id") String id, Model model) {
 		
 		//delete from database
 		empserv.deleteEmployeeById(id);
