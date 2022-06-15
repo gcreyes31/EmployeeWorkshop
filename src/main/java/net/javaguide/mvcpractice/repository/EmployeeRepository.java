@@ -23,5 +23,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, String> {
 	// 	we use ?1. If there are 3 parameters, you can include them in the query with ?1, ?2 and ?3
 	@Query("select e from Employee e where e.firstName like %?1% or e.lastName like %?1%")
 	List<Employee> searchEmployeeByName(String name);
-
 }

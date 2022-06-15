@@ -26,7 +26,7 @@ public class EmployeeController {
 	//change the string inside to navigate across the different templates
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		model.addAttribute("listEmployees", empserv.getAllEmployees());
+		model.addAttribute("listEmployee", empserv.getAllEmployees());
 		return "index";
 	}
 	
