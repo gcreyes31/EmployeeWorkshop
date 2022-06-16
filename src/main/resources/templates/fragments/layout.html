@@ -21,7 +21,7 @@
 		<div class = "nav">
 			<table>
 				<tr>
-					<td><a href="#home"><img src="../../static/images/logo2.svg"></a></td>
+					<td><a href="#home">Welcome to the Employee Management System</a></td>
 					<td><a href="#news"></a></td>
 					<td><a href="#contact"></a></td>
 				</tr>
@@ -34,28 +34,29 @@
 				<div><!--th:if="${user has not logged in}"-->
 					<div class="login-form" style="text-align: center">
 						<form>
-							<input type="text" placeholder = "username">
-							<input type = "text" placeholder = "password">
-							<button type = "submit">Login</button>
+							<input type= "text" class = "form-control form-control-sm" placeholder = "username">
+							<input type = "text" class = "form-control form-control-sm" placeholder = "password">
+							<button type = "submit" class = "btn">Login</button>
 						</form>
 					</div>
 				</div>
 				<div><!--th:if="${user is student}"-->
 					<a href="#">My Courses</a>
 					<a href="#">Enroll a Class</a>
-					<a href="#">Clients</a>
-					<a href="#">Contact</a>
+					<a href="#">CGPA Calculator</a>
 				</div>
 				<div><!--th:if="${user is lecturer}"-->
 					<a href="#">View My Courses</a>
-					<a href="#">Services</a>
-					<a href="#">Clients</a>
-					<a href="#">Contact</a>
+					<a href="#">Grade Course</a>
+					<a href="#">View Student Performance</a>
 				</div>
 				<div><!--th:if="${user is admin}"-->
 					<a href="#">Manage Students</a>
 					<a href="#">Manage Lecturers</a>
 					<a href="#">Manage Courses</a>
+				</div>
+				<div>
+					<a href="#">Logout</a>
 				</div>
 	
 		</div>
