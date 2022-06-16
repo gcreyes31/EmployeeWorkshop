@@ -12,15 +12,55 @@
 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 			crossorigin="anonymous">
 	<!-- you can put this link into any HTML header to access bootstrap CSS-->
+	
+	<link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 
 <body>
-	<div th:fragment="menu" id="menu">
-	Employee List Bla
+	<div th:fragment="header" id="header">
+		<div class = "nav">
+			<table>
+				<tr>
+					<td><a href="#home"><img src="../../static/images/logo2.svg"></a></td>
+					<td><a href="#news"></a></td>
+					<td><a href="#contact"></a></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 	
-	<div th:fragment="header" id="header">
-	Employee List Again
+	<div th:fragment="menu" id="menu">
+		<div class="sidenav">
+				<div><!--th:if="${user has not logged in}"-->
+					<div class="login-form" style="text-align: center">
+						<form>
+							<input type="text" placeholder = "username">
+							<input type = "text" placeholder = "password">
+							<button type = "submit">Login</button>
+						</form>
+					</div>
+				</div>
+				<div><!--th:if="${user is student}"-->
+					<a href="#">My Courses</a>
+					<a href="#">Enroll a Class</a>
+					<a href="#">Clients</a>
+					<a href="#">Contact</a>
+				</div>
+				<div><!--th:if="${user is lecturer}"-->
+					<a href="#">View My Courses</a>
+					<a href="#">Services</a>
+					<a href="#">Clients</a>
+					<a href="#">Contact</a>
+				</div>
+				<div><!--th:if="${user is admin}"-->
+					<a href="#">Manage Students</a>
+					<a href="#">Manage Lecturers</a>
+					<a href="#">Manage Courses</a>
+				</div>
+	
+		</div>
 	</div>
+	
+
 </body>
 </html>

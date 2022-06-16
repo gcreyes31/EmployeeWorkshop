@@ -11,13 +11,17 @@
 			integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 			crossorigin="anonymous">
 	<!-- you can put this link into any HTML header to access bootstrap CSS-->
+	
+		<link rel="stylesheet" th:href="@{/styles.css}">
 </head>
 
 <body>
-	<div class="container my-2">
 	
-	<div th:replace="fragments/layout.html:: menu"></div>
 	<div th:replace="fragments/layout.html:: header"></div>
+	<div th:replace="fragments/layout.html:: menu"></div>
+	
+	<div class="container my-2 inside">
+
 	
 	<h1>Employee Management System</h1>
 	<br>

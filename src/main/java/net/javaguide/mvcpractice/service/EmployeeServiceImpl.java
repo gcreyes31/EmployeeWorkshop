@@ -60,11 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	//user-defined method to look for the employees by name provided in the search bar
 	public List<Employee> returnEmployeeByName(String name) {
 		// TODO Auto-generated method stub
-
 		return this.emprepo.searchEmployeeByName(name);
 	}
-
-	
-
 
 }
