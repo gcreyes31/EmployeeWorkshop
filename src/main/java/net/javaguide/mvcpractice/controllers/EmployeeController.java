@@ -3,6 +3,7 @@ package net.javaguide.mvcpractice.controllers;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,8 +27,9 @@ public class EmployeeController {
 	//change the string inside to navigate across the different templates
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		model.addAttribute("listEmployees", empserv.getAllEmployees());
-		return "index";
+		return findPaginated(1, model);
+		//model.addAttribute("listEmployees", empserv.getAllEmployees());
+		//return "index";
 	}
 	
 	//redirects to page where you can add a new employee
@@ -115,4 +117,21 @@ public class EmployeeController {
 		//redirect to home page
 		return "index";
 	}
+	
+	@GetMapping("/page/{pageNo}")
+	public String findPaginated(@PathVariable(value = "pageNo") int pageNo, Model model) {
+		int pageSize = 5;
+		
+		Page<Employee> page = empserv.findPaginated(pageNo, pageSize);
+		
+		List<Employee> listEmployees = page.getContent();
+		
+		model.addAttribute("currentPage",pageNo);
+		model.addAttribute("totalPages", page.getTotalPages());
+		model.addAttribute("totalItems", page.getTotalElements());
+		model.addAttribute("listEmployees", listEmployees);
+		
+		return "index";
+	}
+	
 }

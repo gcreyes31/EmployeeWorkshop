@@ -3,6 +3,7 @@ package net.javaguide.mvcpractice.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
@@ -24,4 +25,6 @@ public interface EmployeeService {
 	
 	//returns a list of employees that were searched by name
 	List<Employee> returnEmployeeByName(String name);
+	
+	Page<Employee> findPaginated(int pageNo, int pageSize);
 }
